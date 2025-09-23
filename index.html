@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/main.css">
+  <title>portfolio — meu nome</title>
+</head>
+<body>
+
+  <!-- topbar com botão para abrir/fechar a nav -->
+  <div class="topbar">
+    <button class="hamburger" id="toggleNav" aria-expanded="false" aria-controls="mainNav" title="abrir menu">
+      <!-- ícone simples -->
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+        <path d="M4 6h16M4 12h16M4 18h16" stroke="#0f172a" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <nav class="drawer closed" id="mainNav" aria-hidden="true">
+      <ul>
+        <li><a href="#inicio">início</a></li>
+        <li><a href="#sobre">sobre</a></li>
+        <li><a href="#resumo">resumo</a></li>
+        <li><a href="#portfolio">portfolio</a></li>
+        <li><a href="#contato">contato</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main>
+    <!-- hero / inicio -->
+    <section id="inicio" class="hero">
+      <div class="hero-inner">
+        <div class="site-title">olá — meu nome</div>
+        <div class="site-sub">portfolio</div>
+        <button class="btn-primary" data-target="#sobre">veja mais ↓</button>
+      </div>
+    </section>
+
+    <!-- sobre -->
+    <section id="sobre">
+      <h2 class="section-title">sobre</h2>
+      <p class="muted">aqui vai um parágrafo curto sobre você: quem é, o que faz e qual é o foco do seu trabalho. depois ajustamos melhor conforme seu conteúdo.</p>
+    </section>
+
+    <!-- resumo -->
+    <section id="resumo">
+      <h2 class="section-title">resumo</h2>
+      <p class="muted">um resumo técnico / competências / stacks / habilidades. por exemplo: html, css, javascript, php, react, node, etc.</p>
+      <ul class="muted" style="margin-top:8px">
+        <li>competência 1</li>
+        <li>competência 2</li>
+        <li>competência 3</li>
+      </ul>
+    </section>
+
+    <!-- portfolio -->
+    <section id="portfolio">
+      <h2 class="section-title">portfolio</h2>
+      <div class="grid">
+        <!-- cartões de exemplo, substitua imagens e textos -->
+        <article class="card">
+          <img src="assets/img/projects/project1.jpg" alt="projeto 1">
+          <h3 style="font-size:16px;margin-bottom:6px">Projeto 1</h3>
+          <p class="muted">descrição curta do projeto — tecnologia usada e objetivo.</p>
+        </article>
+
+        <article class="card">
+          <img src="assets/img/projects/project2.jpg" alt="projeto 2">
+          <h3 style="font-size:16px;margin-bottom:6px">Projeto 2</h3>
+          <p class="muted">descrição curta do projeto — tecnologia usada e objetivo.</p>
+        </article>
+
+        <article class="card">
+          <img src="assets/img/projects/project3.jpg" alt="projeto 3">
+          <h3 style="font-size:16px;margin-bottom:6px">Projeto 3</h3>
+          <p class="muted">descrição curta do projeto — tecnologia usada e objetivo.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- contato -->
+    <section id="contato">
+      <h2 class="section-title">contato</h2>
+      <p class="muted">deixe seu e‑mail, telefone ou link para o linkedin / github.</p>
+      <form class="contact-form" onsubmit="event.preventDefault();alert('formulário (exemplo)')">
+        <input class="input" placeholder="nome" required>
+        <input class="input" type="email" placeholder="e-mail" required>
+        <textarea class="input" rows="4" placeholder="mensagem"></textarea>
+        <button class="btn-primary" type="submit">enviar</button>
+      </form>
+    </section>
+
+  </main>
+</body>
+
+<script src="assets/js/main.js"></script>
+</html>
