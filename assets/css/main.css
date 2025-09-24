@@ -1,4 +1,6 @@
 /* reset muito simples */
+@import url('https://fonts.googleapis.com/css2?family=Ramabhadra&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ramabhadra&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,6 +14,7 @@ body {
     'Helvetica Neue', Arial;
   color: #111;
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 /* top bar / drawer */
@@ -28,7 +31,7 @@ body {
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(0, 10, 0, 30);
   display: grid;
   place-items: center;
   background: #fff;
@@ -39,117 +42,232 @@ body {
   outline: 2px solid #cbd5e1;
 }
 
-/* drawer (nav) */
+:root {
+  --accent-color: #06b6d4; /* cor vibrante (ciano) */
+  --accent-color-2: #10b981; /* tom complementar (verde) */
+  --drawer-grad: linear-gradient(
+    135deg,
+    var(--accent-color),
+    var(--accent-color-2)
+  );
+}
+
+/* drawer (nav) - visual mais vibrante */
 .drawer {
   position: fixed;
   left: 16px;
   top: 72px;
-  width: 220px;
-  max-width: 85vw;
-  background: rgba(255, 255, 255, 0.98);
-  border-radius: 12px;
+  width: 240px;
+  max-width: 86vw;
+  background: var(--drawer-grad);
+  color: #fff;
+  border-radius: 14px;
   padding: 12px;
-  box-shadow: 0 12px 30px rgba(10, 10, 10, 0.08);
+  box-shadow: 0 18px 42px rgba(3, 10, 18, 0.28);
   transform-origin: left top;
-  transition: transform 0.28s ease, opacity 0.28s ease;
+  transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1), opacity 0.28s ease,
+    box-shadow 0.28s ease;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 65;
 }
+
+/* quando fechado */
 .drawer.closed {
-  transform: translateX(-8px) scale(0.97);
+  transform: translateX(-12px) scale(0.98);
   opacity: 0;
   pointer-events: none;
 }
+
+/* lista interna */
 .drawer ul {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
+  padding: 6px;
 }
+
+/* links */
 .drawer a {
   display: block;
-  padding: 8px 10px;
-  border-radius: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
   text-decoration: none;
-  color: #0f172a;
+  color: rgba(255, 255, 255, 0.95);
   font-weight: 600;
+  transition: background 0.18s ease, transform 0.12s ease, color 0.18s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
+
+/* hover suave */
 .drawer a:hover {
-  background: #f1f5f9;
+  background: rgba(255, 255, 255, 0.09);
+  transform: translateX(2px);
+}
+
+/* estado ativo - quando a seção correspondente está visível */
+.drawer a.active {
+  background: #ffffff; /* destaque branco */
+  color: var(--accent-color); /* texto com cor vibrante */
+  box-shadow: 0 8px 20px rgba(3, 10, 18, 0.14);
+  transform: none;
+  font-weight: 700;
+}
+
+/* pequeno indicador à esquerda do link ativo */
+.drawer a.active::before {
+  content: '';
+  width: 6px;
+  height: 28px;
+  border-radius: 4px;
+  background: linear-gradient(
+    180deg,
+    var(--accent-color),
+    var(--accent-color-2)
+  );
+  margin-right: 8px;
 }
 
 /* hero */
-/* garante que o hero preencha toda a tela */
 .hero {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh; /* garante ocupar a altura da tela */
+  height: 100svh; /* tenta usar a unidade visual-viewport em navegadores que suportam */
+  width: 100%; /* evita overflow horizontal causado por 100vw */
   display: flex;
-  flex-direction: column; /* para organizar conteúdo verticalmente */
+  flex-direction: column;
   align-items: center;
-  justify-content: center; /* centraliza hero-inner verticalmente */
+  justify-content: center;
   position: relative;
   background-image: url('../img/inicio.png');
-  background-size: cover;
-  background-position: center;
+  background-size: cover; /* cobre todo o espaço mantendo proporção */
+  background-position: center center; /* mantém o centro visível */
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
+  overflow: hidden; /* evita elementos internos criarem rolagem */
 }
 
-.hero-inner {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: #fff;
-  padding: 24px;
-}
-
-/* overlay */
+/* overlay simplificado e confiável */
 .hero::after {
   content: '';
   position: absolute;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0; /* cobre todo o .hero */
   background: linear-gradient(
     180deg,
     rgba(2, 6, 23, 0.35),
     rgba(2, 6, 23, 0.45)
   );
   z-index: 1;
+  pointer-events: none;
 }
 
-/* ícones sociais no final */
+/* conteúdo central */
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 24px;
+  /* garante espaço inferior para os ícones não colidirem com o conteúdo */
+  padding-bottom: 84px;
+  max-width: 1100px; /* mantém o texto legível em telas grandes */
+}
+
+/* garante que #inicio não seja limitado pela regra genérica de sections */
+section#inicio {
+  padding: 0;
+  margin: 0;
+  max-width: none;
+  width: 100%;
+  scroll-margin-top: 0; /* hero no topo não precisa de offset */
+}
+
+section#sobre {
+  max-width: none;
+  width: 100%;
+  scroll-margin-top: 0;
+  display: flex;
+  gap: 100px;
+  height: 1000px;
+}
+/* ícones sociais no final, sempre centralizados (corrigido) */
 .socials {
   position: absolute;
-  bottom: 20px; /* distância da borda inferior da tela */
+  bottom: calc(
+    env(safe-area-inset-bottom, 12px) + 12px
+  ); /* seguro em dispositivos com notch */
   left: 50%;
-  transform: translateX(-50%); /* centraliza horizontalmente */
+  transform: translateX(-50%);
   display: flex;
-  gap: 16px;
-  z-index: 2;
+  gap: 50%; /* espaçamento razoável entre ícones */
+  z-index: 3;
+  margin-bottom: 4%;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
 }
 
+/* estilo dos ícones — remove inline sizing e padroniza */
 .socials img {
-  width: 32px;
-  height: 32px;
-  transition: transform 0.2s;
+  width: 36px;
+  height: 36px;
+  display: block;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* colore branco quando svg for escuro */
+  transition: transform 0.18s ease, opacity 0.18s ease;
 }
 
 .socials img:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
+  opacity: 0.95;
+}
+
+/* responsividade extra: reduz tamanho dos ícones em telas pequenas */
+/* reduz um pouco em telas pequenas */
+@media (max-width: 420px) {
+  .socials img {
+    width: 28px;
+    height: 28px;
+  }
+  .hero-inner {
+    padding-bottom: 72px;
+  }
 }
 
 .site-title {
-  font-size: clamp(28px, 6vw, 44px);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  color: #ffffff;
+  font-size: 5.4rem;
+  line-height: 1.071;
+  max-width: 900px;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  font-family: 'Ramabhadra', sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 .site-sub {
-  font-size: clamp(14px, 2.4vw, 18px);
+  font-family: 'Times New Roman', Times, serif;
+  font-size: clamp(26px, 2.4vw, 18px);
   opacity: 0.92;
 }
+
+.title-portfolio {
+  font-size: 1.6rem;
+  font-family: 'Ramabhadra', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: rgb(77, 232, 180);
+}
+
 .btn-primary {
-  margin-top: 8px;
-  padding: 12px 20px;
+  margin-top: 7%;
+  padding: 20px 60px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -157,6 +275,10 @@ body {
   cursor: pointer;
   font-weight: 700;
   color: white;
+  font-family: 'Ramabhadra', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.15em;
 }
 
 .btn-primary:hover {
@@ -211,6 +333,299 @@ textarea {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+/* ========== ABOUT (reorganizado) ========== */
+.about-section {
+  padding: 120px 20px;
+  color: #0f172a;
+  background: transparent;
+}
+
+.about-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* header */
+.about-header h2 {
+  font-size: 1.4rem;
+  color: var(--accent-color, #06b6d4);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.about-header .about-lead {
+  font-size: 2.05rem;
+  color: #334155;
+  margin-bottom: 22px;
+  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0.15em;
+}
+
+/* top area: image + description */
+.about-top {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+/* imagem */
+.about-figure {
+  margin: 0;
+}
+.profile-pic {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.12);
+  border: 4px solid rgba(255, 255, 255, 0.04);
+  display: block;
+}
+
+/* descrição ao lado da imagem */
+.about-desc {
+  flex: 1 1 auto;
+}
+.about-desc h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.about-desc p {
+  margin-bottom: 12px;
+  color: #334155;
+}
+.brief-list {
+  margin-top: 8px;
+  list-style: disc;
+  margin-left: 20px;
+  color: #334155;
+}
+
+/* mid area: skills (left) and profile list (right) */
+/* === layout: colocar skills no início e perfil no fim do pai === */
+.about-mid {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  justify-content: space-between; /* uma coluna no início, outra no fim */
+  margin-bottom: 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* dar "colunas" com base fixa/responsiva */
+.about-skills {
+  flex: 0 1 58%; /* ocupa até ~58% do espaço, encolhe se necessário */
+  min-width: 260px;
+}
+
+.about-info {
+  flex: 0 1 36%; /* ocupa até ~36% do espaço, encolhe se necessário */
+  min-width: 220px;
+  text-align: left;
+}
+
+/* quando a tela ficar estreita, empilhamos mantendo espaçamento */
+@media (max-width: 900px) {
+  .about-mid {
+    flex-direction: column;
+    gap: 18px;
+    align-items: stretch;
+  }
+  .about-skills,
+  .about-info {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+}
+
+/* === botões centralizados e lado a lado === */
+.about-cta {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center; /* centraliza os botões no pai */
+  flex-wrap: wrap; /* permite quebrar em telas pequenas mantendo centralização */
+}
+
+/* mantém botões do mesmo tamanho visual quando estiverem lado a lado */
+.about-cta .btn {
+  min-width: 160px;
+  text-align: center;
+}
+
+/* responsividade: em telas muito pequenas os botões ocupam largura maior */
+@media (max-width: 420px) {
+  .about-cta .btn {
+    min-width: 140px;
+    padding: 10px 14px;
+  }
+}
+
+/* perfil / infos */
+.clear-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.clear-list li {
+  margin-bottom: 10px;
+  color: #334155;
+}
+.clear-list strong {
+  display: inline-block;
+  width: 95px;
+  color: #0f172a;
+}
+
+/* skill bars */
+.skill-bars {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+}
+.skill-bars li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.progress {
+  flex: 1 1 auto;
+  height: 14px;
+  background: rgba(2, 6, 23, 0.06);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+.progress span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--accent-color, #06b6d4),
+    var(--accent-color-2, #10b981)
+  );
+  text-align: right;
+  padding-right: 8px;
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 14px;
+}
+/* porcentagens (ajuste conforme as classes usadas) */
+.progress.percent94 span {
+  width: 94%;
+}
+.progress.percent90 span {
+  width: 90%;
+}
+.progress.percent92 span {
+  width: 92%;
+}
+.progress.percent88 span {
+  width: 88%;
+}
+
+/* CTA buttons */
+.about-cta {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* botão base */
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+/* outline */
+.btn-outline {
+  color: var(--accent-color, #06b6d4);
+  border: 2px solid var(--accent-color, #06b6d4);
+  background: transparent;
+}
+.btn-outline:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(6, 182, 212, 0.12);
+}
+
+/* primary filled */
+.btn-primary-dowload {
+  color: #071123;
+  background: linear-gradient(
+    90deg,
+    var(--accent-color, #06b6d4),
+    var(--accent-color-2, #10b981)
+  );
+  border: none;
+}
+.btn-primary-dowload:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.14);
+}
+
+/* responsividade */
+@media (max-width: 900px) {
+  .about-top {
+    gap: 18px;
+  }
+  .profile-pic {
+    width: 180px;
+    height: 180px;
+  }
+  .about-mid {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 700px) {
+  .about-top {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-desc {
+    order: 2;
+  }
+  .about-figure {
+    order: 1;
+  }
+  .about-mid {
+    flex-direction: column;
+  }
+  .about-info {
+    width: 100%;
+  }
+  .clear-list strong {
+    display: inline-block;
+    width: auto;
+  }
+  .about-cta {
+    justify-content: center;
+  }
+  .profile-pic {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 12px;
+  }
 }
 
 /* responsive */

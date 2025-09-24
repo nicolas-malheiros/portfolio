@@ -4,7 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="assets/css/main.css" />
-    <title>portfolio — meu nome</title>
+    <link
+      rel="shortcut icon"
+      href="assets/img/Gemini_Generated_Image_2mcq322mcq322mcq.png"
+      type="image/x-icon"
+    />
+
+    <title>Nicolas Malheiros - Portfólio</title>
   </head>
   <body>
     <!-- topbar com botão para abrir/fechar a nav -->
@@ -46,62 +52,138 @@
     </div>
 
     <main>
-      <!-- hero / inicio -->
-      <div class="hero">
+      <!-- hero / inicio (section com id para nav funcionar) -->
+      <section id="inicio" class="hero">
         <div class="hero-inner">
-          <div>PORTFOLIO</div>
+          <div class="title-portfolio">P O R T F O L I O</div>
           <div class="site-title">Nicolas Malheiros</div>
           <div class="site-sub">| Full-stack Developer |</div>
-          <button class="btn-primary" data-target="#sobre">Veja mais ↓</button>
+          <button class="btn-primary" data-target="#sobre">VEJA MAIS ↓</button>
         </div>
 
-        <!-- ícones sociais no final da hero -->
+        <!-- ícones sociais no final da hero (apenas uma vez, dentro da section) -->
         <div class="socials">
           <a
-            href="https://github.com/seuusuario"
+            href="https://github.com/nicolas-malheiros"
             target="_blank"
             aria-label="GitHub"
           >
-            <img src="assets/img/icons/github.svg" alt="GitHub" />
+            <img src="/assets/img/icons/github.svg" alt="GitHub" />
           </a>
           <a
-            href="https://www.linkedin.com/in/seuusuario/"
+            href="https://www.linkedin.com/in/nicolas-malheiros-90b191249/"
             target="_blank"
             aria-label="LinkedIn"
           >
-            <img src="assets/img/icons/linkedin.svg" alt="LinkedIn" />
+            <img src="/assets/img/icons/linkedin.svg" alt="LinkedIn" />
           </a>
           <a
-            href="https://www.instagram.com/seuusuario/"
+            href="https://www.instagram.com/nicolasmalheiros_/"
             target="_blank"
             aria-label="Instagram"
           >
-            <img src="assets/img/icons/instagram.svg" alt="Instagram" />
+            <img
+              src="/assets/img/icons/instagram-svgrepo-com.svg"
+              alt="Instagram"
+              style="height: 80px; width: 50px"
+            />
           </a>
         </div>
-      </div>
-
-      <!-- sobre -->
-      <section id="sobre">
-        <h2 class="section-title">sobre</h2>
-        <p class="muted">
-          aqui vai um parágrafo curto sobre você: quem é, o que faz e qual é o
-          foco do seu trabalho. depois ajustamos melhor conforme seu conteúdo.
-        </p>
       </section>
 
-      <!-- resumo -->
-      <section id="resumo">
-        <h2 class="section-title">resumo</h2>
-        <p class="muted">
-          um resumo técnico / competências / stacks / habilidades. por exemplo:
-          html, css, javascript, php, react, node, etc.
-        </p>
-        <ul class="muted" style="margin-top: 8px">
-          <li>competência 1</li>
-          <li>competência 2</li>
-          <li>competência 3</li>
-        </ul>
+      <!-- sobre -->
+      <!-- about / sobre (versão reorganizada) -->
+      <section id="sobre" class="about-section">
+        <div class="about-inner">
+          <!-- título e introdução -->
+          <header class="about-header">
+            <h2>Sobre</h2>
+            <p class="about-lead">
+              <b> Vou contar um pouco sobre meu <br />trabalho...</b>
+            </p>
+          </header>
+
+          <!-- topo: imagem à esquerda / descrição à direita -->
+          <div class="about-top">
+            <figure class="about-figure">
+              <img
+                src="assets/img/profile.jfif"
+                alt="Foto de perfil - Nicolas Malheiros"
+                class="profile-pic"
+              />
+            </figure>
+
+            <div class="about-desc">
+              <h3>Formação & Experiência</h3>
+              <p>
+                Cursando graduação em Desenvolvimento de Sistemas e formado em
+                técnico em Desenvolvimento de Sistemas. Trabalhando e
+                aprendendo, com experiência em PHP (CodeIgniter), frontend,
+                javascript, bancos MySQL/Postgres.<br />
+                Gosto de participar e melhorar projetos que ajudam as pessoas.
+              </p>
+
+              <h4>Resumo rápido</h4>
+              <ul class="brief-list">
+                <li>Desenvolvimento Full-stack</li>
+                <li>Sistemas Web</li>
+                <li>Interfaces responsivas e acessíveis</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- meio: skills (esq) e perfil/dados (dir) -->
+          <div class="about-mid">
+            <div class="about-skills">
+              <h3>Skills</h3>
+
+              <ul class="skill-bars">
+                <li>
+                  <div class="progress percent94"><span>94%</span></div>
+                  <strong>Front-end</strong>
+                </li>
+                <li>
+                  <div class="progress percent90"><span>90%</span></div>
+                  <strong>Back-end</strong>
+                </li>
+                <li>
+                  <div class="progress percent92"><span>70%</span></div>
+                  <strong>APIs / Integrations</strong>
+                </li>
+              </ul>
+            </div>
+
+            <aside class="about-info">
+              <h3>Perfil</h3>
+              <ul class="info-list clear-list">
+                <li>
+                  <strong>Nome:</strong> <span>Nicolas Daniel Malheiros</span>
+                </li>
+                <li>
+                  <strong>Nascimento:</strong> <span>09 de 05 de 20XX</span>
+                </li>
+                <li>
+                  <strong>Cargo:</strong> <span>Full-stack Developer</span>
+                </li>
+                <li>
+                  <strong>Email:</strong>
+                  <span>nicolasdanielmalheiros@email.com</span>
+                </li>
+              </ul>
+            </aside>
+          </div>
+
+          <!-- botões -->
+          <div class="about-cta">
+            <a href="#contato" class="btn btn-outline">Entre em contato</a>
+            <a
+              href="CURRICULO - NICOLAS DANIEL MALHEIROS.pdf"
+              class="btn btn-primary-dowload"
+              download
+              >Download CV</a
+            >
+          </div>
+        </div>
       </section>
 
       <!-- portfolio -->
