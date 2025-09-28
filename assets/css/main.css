@@ -191,7 +191,6 @@ section#sobre {
   scroll-margin-top: 0;
   display: flex;
   gap: 100px;
-  height: 1000px;
 }
 /* ícones sociais no final, sempre centralizados (corrigido) */
 .socials {
@@ -583,6 +582,15 @@ textarea {
   box-shadow: 0 10px 30px rgba(16, 185, 129, 0.14);
 }
 
+section#resumo {
+  max-width: none;
+  width: 100%;
+  scroll-margin-top: 0;
+  display: flex;
+  gap: 100px;
+  background-color: #edeaea;
+}
+
 /* responsividade */
 @media (max-width: 900px) {
   .about-top {
@@ -650,4 +658,146 @@ textarea {
     left: 12px;
     top: 12px;
   }
+}
+
+/* resumo */
+/* === timeline duas colunas (Educação | Experiência) === */
+.resumo-section {
+  padding: 80px 20px;
+  background: #f7fafb;
+  color: #0f172a;
+}
+.resumo-section .about-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* grid com duas colunas que empilha em mobile */
+.timeline-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+  margin: 20px 0 28px;
+}
+
+/* título da coluna */
+.timeline-title {
+  margin: 0 0 12px;
+  color: var(--accent-color, #06b6d4);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* cada coluna tem sua própria timeline vertical */
+.timeline {
+  position: relative;
+  padding: 8px 0 8px 0;
+}
+
+/* linha vertical dentro da coluna (à esquerda) */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 36px;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--accent-color, #06b6d4),
+    var(--accent-color-2, #10b981)
+  );
+  border-radius: 4px;
+  opacity: 0.95;
+}
+
+/* item do timeline (stacked vertically) */
+.timeline-item {
+  position: relative;
+  margin: 20px 0;
+  padding-left: 80px; /* espaço para marcador e linha */
+  box-sizing: border-box;
+}
+
+/* marcador (círculo com ano) */
+.timeline-marker {
+  position: absolute;
+  left: 8px; /* sobre a linha */
+  top: 8px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  padding: 25px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
+  border: 6px solid var(--accent-color, #06b6d4);
+  z-index: 4;
+  font-weight: 700;
+  color: #071123;
+  font-size: 0.85rem;
+}
+
+/* conteúdo do item */
+.timeline-content {
+  background: #ffffff;
+  padding: 12px 14px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.04);
+  border: 1px solid rgba(2, 6, 23, 0.04);
+}
+
+.timeline-content h4 {
+  margin: 0 0 6px;
+  font-size: 1.02rem;
+  color: #0f172a;
+}
+.timeline-content p {
+  margin: 0;
+  color: #475569;
+  line-height: 1.45;
+  font-size: 0.95rem;
+}
+
+/* responsivo: empilha colunas uma embaixo da outra em telas pequenas */
+@media (max-width: 880px) {
+  .timeline-grid {
+    grid-template-columns: 1fr;
+  }
+  .timeline::before {
+    left: 28px;
+  }
+  .timeline-item {
+    padding-left: 64px;
+  }
+  .timeline-marker {
+    left: 4px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ajuste visual extra para telas muito largas */
+@media (min-width: 1400px) {
+  .timeline::before {
+    left: 44px;
+  }
+  .timeline-item {
+    padding-left: 96px;
+  }
+  .timeline-marker {
+    left: 12px;
+  }
+}
+
+section#portfolio {
+  max-width: none;
+  width: 100%;
+  scroll-margin-top: 0;
+  display: flex;
+  gap: 100px;
+  background-color: #ffffff;
 }
