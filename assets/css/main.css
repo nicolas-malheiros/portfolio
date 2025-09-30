@@ -966,3 +966,102 @@ section#resumo {
     height: 150px;
   }
 }
+
+/* ========== SEÇÃO DE CONTATO ========== */
+
+/* 1. Container Principal da Seção */
+section#contato {
+  background-color: #0f172a; /* Um azul bem escuro, para um visual elegante e focado */
+  color: #f8fafc; /* Texto principal claro para alto contraste */
+  padding: 100px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza todo o conteúdo */
+  width: 100%;
+  max-width: none;
+}
+
+/* 2. Títulos da Seção */
+#contato .section-title {
+  color: #ffffff;
+  font-size: 1.4rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+#contato .muted {
+  color: #94a3b8; /* Um cinza azulado, suave e legível no fundo escuro */
+  max-width: 520px; /* Evita que o texto de apoio fique muito largo */
+  margin-bottom: 40px; /* Bom espaçamento antes do formulário */
+}
+
+/* 3. Formulário e Campos de Input */
+.contact-form {
+  width: 100%;
+  max-width: 640px; /* Mantém o formulário com uma largura confortável */
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Aumenta o espaço entre os campos */
+}
+
+/* Estilo unificado para <input> e <textarea> */
+.contact-form .input,
+.contact-form textarea {
+  background-color: rgba(255, 255, 255, 0.05); /* Fundo translúcido sutil */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Borda discreta */
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-family: inherit; /* Usa a mesma fonte do restante do site */
+  font-size: 1rem;
+  color: #f8fafc; /* Cor do texto que o usuário digita */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Transição suave */
+}
+
+/* Remove a alça de redimensionamento que pode quebrar o layout */
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Estilo do texto de placeholder (ex: "nome", "e-mail") */
+.contact-form .input::placeholder,
+.contact-form textarea::placeholder {
+  color: #94a3b8;
+  opacity: 1; /* Garante que o placeholder seja visível */
+}
+
+/* Efeito de Foco: quando o usuário clica para digitar */
+.contact-form .input:focus,
+.contact-form textarea:focus {
+  outline: none; /* Remove a borda padrão do navegador */
+  border-color: var(--accent-color); /* Destaca a borda com sua cor principal */
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.3); /* Adiciona um brilho suave */
+}
+
+/* 4. Botão de Envio */
+/* Note que no seu HTML o botão está com a classe .btn-primary-enviar */
+.btn-primary-enviar {
+  padding: 14px 28px;
+  border-radius: 10px;
+  border: none;
+  background: var(
+    --drawer-grad
+  ); /* Usa o gradiente vibrante que você definiu */
+  color: #071123; /* Texto escuro para máximo contraste no botão */
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  margin-top: 12px; /* Espaço extra acima do botão */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary-enviar:hover,
+.btn-primary-enviar:focus {
+  transform: translateY(-4px); /* Efeito de "levantar" ao passar o mouse */
+  box-shadow: 0 10px 24px rgba(6, 182, 212, 0.2);
+  outline: none;
+}
