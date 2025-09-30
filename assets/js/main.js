@@ -217,6 +217,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // pointer drag (mouse & touch)
     track.addEventListener('pointerdown', (e) => {
+      // ADICIONE ESTA VERIFICAÇÃO AQUI
+      if (e.target.closest('a')) {
+        return
+      }
+
       isDragging = true
       startX = e.clientX
       track.style.transition = ''
