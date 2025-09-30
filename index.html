@@ -451,7 +451,7 @@
 
         <form
           class="contact-form"
-          action="assets/enviar-contato.php"
+          action="https://formsubmit.co/nicolasdanielmalheiros@email.com"
           method="POST"
         >
           <input
@@ -474,6 +474,14 @@
             rows="4"
             placeholder="mensagem"
           ></textarea>
+
+          <input
+            type="hidden"
+            name="_subject"
+            value="Nova mensagem do Portfólio!"
+          />
+          <input type="hidden" name="_captcha" value="false" />
+
           <button class="btn-primary-enviar" type="submit">enviar</button>
         </form>
       </section>
