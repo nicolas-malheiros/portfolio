@@ -854,6 +854,8 @@ section#resumo {
   flex-direction: column;
   gap: 10px;
   flex: 1;
+  align-items: center;
+  text-align: center;
 }
 
 .card-title {
@@ -883,6 +885,7 @@ section#resumo {
   text-align: center;
   align-self: flex-start;
   transition: transform 0.12s ease, box-shadow 0.12s ease;
+  align-self: center;
 }
 .card-cta:hover {
   transform: translateY(-3px);
@@ -1064,4 +1067,49 @@ section#contato {
   transform: translateY(-4px); /* Efeito de "levantar" ao passar o mouse */
   box-shadow: 0 10px 24px rgba(6, 182, 212, 0.2);
   outline: none;
+}
+
+/* ========== RESPONSIVIDADE DA SEÇÃO HERO ========== */
+
+/* Para telas de tablets e celulares maiores (até 768px de largura) */
+@media (max-width: 768px) {
+  .site-title {
+    font-size: 4rem; /* Diminui um pouco o tamanho do nome */
+    line-height: 1.1;
+  }
+
+  .site-sub {
+    font-size: 1.25rem; /* Ajusta o subtítulo */
+  }
+
+  .btn-primary {
+    padding: 18px 40px; /* Diminui o tamanho do botão */
+    margin-top: 10%;
+  }
+}
+
+/* Para telas de celulares menores (até 480px de largura) */
+@media (max-width: 480px) {
+  .hero-inner {
+    padding: 16px; /* Ajusta o espaçamento interno */
+  }
+
+  .site-title {
+    font-size: 2.8rem; /* Deixa o nome bem menor e legível */
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+  }
+
+  .title-portfolio {
+    font-size: 1.2rem;
+  }
+
+  .site-sub {
+    font-size: 1.1rem; /* Ajusta o subtítulo para mobile */
+  }
+
+  .btn-primary {
+    padding: 16px 32px; /* Botão mais compacto */
+    font-size: 0.9rem;
+  }
 }
