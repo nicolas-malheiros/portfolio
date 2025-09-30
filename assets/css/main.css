@@ -793,11 +793,176 @@ section#resumo {
   }
 }
 
-section#portfolio {
-  max-width: none;
+/* ---------- CARROSSEL DE PROJETOS ---------- */
+.portfolio-section {
+  padding: 64px 20px;
+  background: transparent;
+}
+.portfolio-section .about-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* container do carrossel */
+.projects-carousel {
+  position: relative;
+  margin-top: 18px;
+}
+
+/* viewport e track */
+.carousel-viewport {
+  overflow: hidden;
   width: 100%;
-  scroll-margin-top: 0;
+}
+
+.carousel-track {
   display: flex;
-  gap: 100px;
-  background-color: #ffffff;
+  gap: 18px;
+  transition: transform 320ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  will-change: transform;
+}
+
+/* cada item: largura responsiva (ajustada via JS também) */
+.carousel-item {
+  flex: 0 0 auto;
+  width: 100%; /* JS ajusta largura se mostrar mais de 1 por slide */
+  box-sizing: border-box;
+}
+
+/* cartão do projeto */
+.card-project {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.06);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid rgba(2, 6, 23, 0.04);
+}
+
+.card-thumb {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.card-title {
+  font-size: 1.05rem;
+  margin: 0;
+  color: #071123;
+}
+.card-desc {
+  color: #475569;
+  margin: 0;
+  flex: 1;
+}
+
+/* botão veja no github */
+.card-cta {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    var(--accent-color, #06b6d4),
+    var(--accent-color-2, #10b981)
+  );
+  color: #071123;
+  text-decoration: none;
+  font-weight: 700;
+  text-align: center;
+  align-self: flex-start;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.card-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(6, 182, 212, 0.12);
+}
+
+/* botões prev/next */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(7, 17, 35, 0.9);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 40;
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.12);
+}
+.carousel-btn.prev {
+  left: -10px;
+}
+.carousel-btn.next {
+  right: -10px;
+}
+.carousel-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+  transform: none;
+}
+
+/* paginação dots */
+.carousel-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 14px;
+}
+.carousel-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(7, 17, 35, 0.12);
+  cursor: pointer;
+}
+.carousel-dots button.active {
+  background: linear-gradient(
+    90deg,
+    var(--accent-color, #06b6d4),
+    var(--accent-color-2, #10b981)
+  );
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
+}
+
+/* responsividade: mostra 1 / 2 / 3 por vista visualmente, JS controla o cálculo exato */
+@media (min-width: 700px) {
+  .carousel-item {
+    width: calc(50% - 9px);
+  } /* visual 2 por vista */
+}
+@media (min-width: 1100px) {
+  .carousel-item {
+    width: calc(33.333% - 12px);
+  } /* visual 3 por vista */
+}
+
+/* ajuste para evitar botões fora da tela em small containers */
+@media (max-width: 520px) {
+  .carousel-btn.prev {
+    left: 6px;
+  }
+  .carousel-btn.next {
+    right: 6px;
+  }
+  .card-thumb {
+    height: 150px;
+  }
 }

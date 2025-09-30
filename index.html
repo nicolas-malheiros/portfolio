@@ -262,32 +262,217 @@
       </section>
 
       <!-- portfolio -->
-      <section id="portfolio">
-        <h2 class="section-title">portfolio</h2>
-        <div class="grid">
-          <article class="card">
-            <img src="assets/img/projects/project1.jpg" alt="projeto 1" />
-            <h3 style="font-size: 16px; margin-bottom: 6px">Projeto 1</h3>
-            <p class="muted">
-              descrição curta do projeto — tecnologia usada e objetivo.
+      <!-- PORTFOLIO — CARROSSEL -->
+      <section
+        id="portfolio"
+        class="portfolio-section"
+        aria-label="Portfólio de projetos"
+      >
+        <div class="about-inner">
+          <header class="about-header">
+            <h2>Portfolio</h2>
+            <p class="about-lead">
+              Projetos selecionados — clique em "Veja no GitHub" para abrir o
+              repositório.
             </p>
-          </article>
+          </header>
 
-          <article class="card">
-            <img src="assets/img/projects/project2.jpg" alt="projeto 2" />
-            <h3 style="font-size: 16px; margin-bottom: 6px">Projeto 2</h3>
-            <p class="muted">
-              descrição curta do projeto — tecnologia usada e objetivo.
-            </p>
-          </article>
+          <div class="projects-carousel" aria-roledescription="carousel">
+            <button class="carousel-btn prev" aria-label="Anterior">
+              &larr;
+            </button>
 
-          <article class="card">
-            <img src="assets/img/projects/project3.jpg" alt="projeto 3" />
-            <h3 style="font-size: 16px; margin-bottom: 6px">Projeto 3</h3>
-            <p class="muted">
-              descrição curta do projeto — tecnologia usada e objetivo.
-            </p>
-          </article>
+            <div class="carousel-viewport">
+              <div class="carousel-track">
+                <!-- Exemplo de projeto: duplique e ajuste data-github, img, título, descrição -->
+                <article
+                  class="carousel-item"
+                  data-github="https://github.com/usuario/projeto-1"
+                >
+                  <div class="card-project">
+                    <img
+                      src="assets/img/projects/project1.jpg"
+                      alt="Screenshot do projeto 1"
+                      class="card-thumb"
+                    />
+                    <div class="card-body">
+                      <h3 class="card-title">Projeto 1</h3>
+                      <p class="card-desc">
+                        Descrição curta do projeto 1 — stack: React, Node.
+                      </p>
+                      <a
+                        class="card-cta"
+                        href="https://github.com/usuario/projeto-1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Veja no GitHub</a
+                      >
+                    </div>
+                  </div>
+                </article>
+
+                <article
+                  class="carousel-item"
+                  data-github="https://github.com/usuario/projeto-2"
+                >
+                  <div class="card-project">
+                    <img
+                      src="assets/img/projects/project2.jpg"
+                      alt="Screenshot do projeto 2"
+                      class="card-thumb"
+                    />
+                    <div class="card-body">
+                      <h3 class="card-title">Projeto 2</h3>
+                      <p class="card-desc">
+                        Descrição curta do projeto 2 — stack: Next.js, API.
+                      </p>
+                      <a
+                        class="card-cta"
+                        href="https://github.com/usuario/projeto-2"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Veja no GitHub</a
+                      >
+                    </div>
+                  </div>
+                </article>
+
+                <article
+                  class="carousel-item"
+                  data-github="https://github.com/usuario/projeto-3"
+                >
+                  <div class="card-project">
+                    <img
+                      src="assets/img/projects/project3.jpg"
+                      alt="Screenshot do projeto 3"
+                      class="card-thumb"
+                    />
+                    <div class="card-body">
+                      <h3 class="card-title">Projeto 3</h3>
+                      <p class="card-desc">
+                        Descrição curta do projeto 3 — stack: PHP, MySQL.
+                      </p>
+                      <a
+                        class="card-cta"
+                        href="https://github.com/usuario/projeto-3"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Veja no GitHub</a
+                      >
+                    </div>
+                  </div>
+                </article>
+
+                <!-- adicione quantos projetos quiser -->
+                <article
+                  class="carousel-item"
+                  data-github="https://github.com/usuario/projeto-3"
+                >
+                  <div class="card-project">
+                    <img
+                      src="assets/img/projects/project3.jpg"
+                      alt="Screenshot do projeto 3"
+                      class="card-thumb"
+                    />
+                    <div class="card-body">
+                      <h3 class="card-title">Projeto 3</h3>
+                      <p class="card-desc">
+                        Descrição curta do projeto 3 — stack: PHP, MySQL.
+                      </p>
+                      <a
+                        class="card-cta"
+                        href="https://github.com/usuario/projeto-3"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Veja no GitHub</a
+                      >
+                    </div>
+                  </div>
+                </article>
+                <article
+                  class="carousel-item"
+                  data-github="https://github.com/usuario/projeto-3"
+                >
+                  <div class="card-project">
+                    <img
+                      src="assets/img/projects/project3.jpg"
+                      alt="Screenshot do projeto 3"
+                      class="card-thumb"
+                    />
+                    <div class="card-body">
+                      <h3 class="card-title">Projeto 3</h3>
+                      <p class="card-desc">
+                        Descrição curta do projeto 3 — stack: PHP, MySQL.
+                      </p>
+                      <a
+                        class="card-cta"
+                        href="https://github.com/usuario/projeto-3"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Veja no GitHub</a
+                      >
+                    </div>
+                  </div>
+                </article>
+                <article
+                  class="carousel-item"
+                  data-github="https://github.com/usuario/projeto-3"
+                >
+                  <div class="card-project">
+                    <img
+                      src="assets/img/projects/project3.jpg"
+                      alt="Screenshot do projeto 3"
+                      class="card-thumb"
+                    />
+                    <div class="card-body">
+                      <h3 class="card-title">Projeto 3</h3>
+                      <p class="card-desc">
+                        Descrição curta do projeto 3 — stack: PHP, MySQL.
+                      </p>
+                      <a
+                        class="card-cta"
+                        href="https://github.com/usuario/projeto-3"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Veja no GitHub</a
+                      >
+                    </div>
+                  </div>
+                </article>
+                <article
+                  class="carousel-item"
+                  data-github="https://github.com/usuario/projeto-3"
+                >
+                  <div class="card-project">
+                    <img
+                      src="assets/img/projects/project3.jpg"
+                      alt="Screenshot do projeto 3"
+                      class="card-thumb"
+                    />
+                    <div class="card-body">
+                      <h3 class="card-title">Projeto 3</h3>
+                      <p class="card-desc">
+                        Descrição curta do projeto 3 — stack: PHP, MySQL.
+                      </p>
+                      <a
+                        class="card-cta"
+                        href="https://github.com/usuario/projeto-3"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Veja no GitHub</a
+                      >
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <button class="carousel-btn next" aria-label="Próximo">
+              &rarr;
+            </button>
+
+            <div class="carousel-dots" aria-hidden="false"></div>
+          </div>
         </div>
       </section>
 
