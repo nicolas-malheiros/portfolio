@@ -273,4 +273,59 @@ document.addEventListener('DOMContentLoaded', () => {
     // expose updateLayout for debugging if needed
     carousel.__updateLayout = updateLayout
   })()
-}) // end DOMContentLoaded
+}) // end DOMContentLoaded+
+
+// ==================================================================
+// LÓGICA PARA ENVIO DO FORMULÁRIO DE CONTATO SEM RECARREGAR A PÁGINA
+// ==================================================================
+document.addEventListener('DOMContentLoaded', () => {
+  const contactForm = document.getElementById('portfolio-contact-form')
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (event) {
+      // 1. Impede o comportamento padrão do formulário (recarregar a página)
+      event.preventDefault()
+
+      const submitButton = contactForm.querySelector('button[type="submit"]')
+      const formData = new FormData(contactForm)
+
+      // 2. Dá um feedback visual para o usuário
+      submitButton.disabled = true
+      submitButton.textContent = 'Enviando...'
+
+      // 3. Usa a API Fetch para enviar os dados em segundo plano
+      fetch('https://formsubmit.co/ajax/nicolasdanielmalheiros@gmail.com', {
+        // <<< MUITO IMPORTANTE: TROQUE PELO SEU E-MAIL AQUI! >>>
+        method: 'POST',
+        body: formData,
+        headers: {
+          Accept: 'application/json',
+        },
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json()
+          }
+          // Se a resposta não for OK, lança um erro para ser pego pelo .catch
+          throw new Error('Houve um problema com a resposta do servidor.')
+        })
+        .then((data) => {
+          // 4. Ação em caso de SUCESSO
+          alert('Mensagem enviada com sucesso! Obrigado pelo contato.')
+          contactForm.reset() // Limpa os campos do formulário
+        })
+        .catch((error) => {
+          // 5. Ação em caso de ERRO
+          console.error('Erro ao enviar o formulário:', error)
+          alert(
+            'Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.'
+          )
+        })
+        .finally(() => {
+          // 6. Roda sempre no final, para reativar o botão
+          submitButton.disabled = false
+          submitButton.textContent = 'Enviar'
+        })
+    })
+  }
+})
