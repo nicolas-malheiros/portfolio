@@ -9,16 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const dataButtons = document.querySelectorAll('[data-target]')
   let currentSectionId = null
 
-  // safe helpers
   const safe = (fn) => {
     try {
       fn()
-    } catch (e) {
-      /* swallow to keep site alive */
-    }
+    } catch (e) {}
   }
 
-  // data-target buttons (VEJA MAIS)
   dataButtons.forEach((btn) => {
     btn.addEventListener('click', (ev) => {
       const sel = btn.getAttribute('data-target')
@@ -47,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  // close drawer on link click (and smooth scroll)
   navLinks.forEach((a) => {
     a.addEventListener('click', (ev) => {
       const href = a.getAttribute('href')
@@ -311,7 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then((data) => {
           // 4. Ação em caso de SUCESSO
-          alert('Mensagem enviada com sucesso! Obrigado pelo contato.')
           contactForm.reset() // Limpa os campos do formulário
         })
         .catch((error) => {

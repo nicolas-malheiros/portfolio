@@ -1,4 +1,3 @@
-/* reset muito simples */
 @import url('https://fonts.googleapis.com/css2?family=Ramabhadra&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ramabhadra&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
 * {
@@ -17,7 +16,6 @@ body {
   overflow-x: hidden;
 }
 
-/* top bar / drawer */
 .topbar {
   position: fixed;
   left: 16px;
@@ -43,8 +41,8 @@ body {
 }
 
 :root {
-  --accent-color: #06b6d4; /* cor vibrante (ciano) */
-  --accent-color-2: #10b981; /* tom complementar (verde) */
+  --accent-color: #06b6d4;
+  --accent-color-2: #10b981;
   --drawer-grad: linear-gradient(
     135deg,
     var(--accent-color),
@@ -52,7 +50,6 @@ body {
   );
 }
 
-/* drawer (nav) - visual mais vibrante */
 .drawer {
   position: fixed;
   left: 16px;
@@ -72,14 +69,12 @@ body {
   z-index: 65;
 }
 
-/* quando fechado */
 .drawer.closed {
   transform: translateX(-12px) scale(0.98);
   opacity: 0;
   pointer-events: none;
 }
 
-/* lista interna */
 .drawer ul {
   list-style: none;
   display: flex;
@@ -88,7 +83,6 @@ body {
   padding: 6px;
 }
 
-/* links */
 .drawer a {
   display: block;
   padding: 10px 12px;
@@ -102,22 +96,19 @@ body {
   gap: 8px;
 }
 
-/* hover suave */
 .drawer a:hover {
   background: rgba(255, 255, 255, 0.09);
   transform: translateX(2px);
 }
 
-/* estado ativo - quando a seção correspondente está visível */
 .drawer a.active {
-  background: #ffffff; /* destaque branco */
-  color: var(--accent-color); /* texto com cor vibrante */
+  background: #ffffff;
+  color: var(--accent-color);
   box-shadow: 0 8px 20px rgba(3, 10, 18, 0.14);
   transform: none;
   font-weight: 700;
 }
 
-/* pequeno indicador à esquerda do link ativo */
 .drawer a.active::before {
   content: '';
   width: 6px;
@@ -131,7 +122,6 @@ body {
   margin-right: 8px;
 }
 
-/* hero */
 .hero {
   min-height: 100vh; /* garante ocupar a altura da tela */
   height: 100svh; /* tenta usar a unidade visual-viewport em navegadores que suportam */
@@ -150,11 +140,10 @@ body {
   overflow: hidden; /* evita elementos internos criarem rolagem */
 }
 
-/* overlay simplificado e confiável */
 .hero::after {
   content: '';
   position: absolute;
-  inset: 0; /* cobre todo o .hero */
+  inset: 0;
   background: linear-gradient(
     180deg,
     rgba(2, 6, 23, 0.35),
@@ -164,25 +153,22 @@ body {
   pointer-events: none;
 }
 
-/* conteúdo central */
 .hero-inner {
   position: relative;
   z-index: 2;
   text-align: center;
   color: #fff;
   padding: 24px;
-  /* garante espaço inferior para os ícones não colidirem com o conteúdo */
   padding-bottom: 84px;
-  max-width: 1100px; /* mantém o texto legível em telas grandes */
+  max-width: 1100px;
 }
 
-/* garante que #inicio não seja limitado pela regra genérica de sections */
 section#inicio {
   padding: 0;
   margin: 0;
   max-width: none;
   width: 100%;
-  scroll-margin-top: 0; /* hero no topo não precisa de offset */
+  scroll-margin-top: 0;
 }
 
 section#sobre {
@@ -192,7 +178,7 @@ section#sobre {
   display: flex;
   gap: 100px;
 }
-/* ícones sociais no final, sempre centralizados (corrigido) */
+
 .socials {
   position: absolute;
   bottom: calc(
@@ -201,7 +187,7 @@ section#sobre {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 50%; /* espaçamento razoável entre ícones */
+  gap: 50%;
   z-index: 3;
   margin-bottom: 4%;
   align-items: center;
@@ -209,7 +195,6 @@ section#sobre {
   pointer-events: auto;
 }
 
-/* estilo dos ícones — remove inline sizing e padroniza */
 .socials img {
   width: 36px;
   height: 36px;
@@ -224,8 +209,6 @@ section#sobre {
   opacity: 0.95;
 }
 
-/* responsividade extra: reduz tamanho dos ícones em telas pequenas */
-/* reduz um pouco em telas pequenas */
 @media (max-width: 420px) {
   .socials img {
     width: 28px;
@@ -367,7 +350,6 @@ textarea {
   letter-spacing: 0.15em;
 }
 
-/* top area: image + description */
 .about-top {
   display: flex;
   gap: 28px;
@@ -408,8 +390,6 @@ textarea {
   color: #334155;
 }
 
-/* mid area: skills (left) and profile list (right) */
-/* === layout: colocar skills no início e perfil no fim do pai === */
 .about-mid {
   display: flex;
   gap: 28px;
